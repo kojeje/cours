@@ -21,8 +21,26 @@
          * @ORM\Id
          * @ORM\GeneratedValue(strategy="AUTO")
          */
-
         private $id;
+
+        /**
+         * @ORM\Column(type="date")
+         */
+        private $birthdate;
+
+
+        /**
+         * @ORM\Column(type="date", nullable=true)
+         */
+        private $deathdate;
+
+
+        /**
+         * @ORM\Column(type="text")
+         */
+        private $bio;
+
+
     }
 
 

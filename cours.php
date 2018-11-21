@@ -44,4 +44,7 @@
          * @ORM\Column(type="text")
          */
         private $description;
+        /**
+         * @ORM\Column(type="text" re)
+         */
     }
