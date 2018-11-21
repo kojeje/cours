@@ -40,5 +40,17 @@
          */
         private $price;
 
+        /**
+         * @ORM\Column(type="integer")
+         */
+        private $aut_id;
+
+        /**
+         * @ORM\Column(type="integer")
+         */
+        private $cat_id;
+
+
+
 
     }
