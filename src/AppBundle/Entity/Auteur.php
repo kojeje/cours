@@ -41,6 +41,12 @@
         private $bio;
 
         /**
+         * @ORM\Column(type="string")
+         *
+         */
+        private $auteur;
+
+        /**
          * @ORM\Column(type="integer")
          * * @ORM\GeneratedValue(strategy="AUTO")
          */

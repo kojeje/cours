@@ -1,21 +1,36 @@
 <?php
 
-namespace AppBundle\Controller;
+    namespace AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
 
-class DefaultController extends Controller
-{
-    /**
-     * @Route("/", name="homepage")
-     */
-    public function indexAction(Request $request)
+    use AppBundle\Entity\Livre;
+    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+    use Symfony\Component\HttpFoundation\Request;
+    use Symfony\Component\Routing\Annotation\Route;
+
+    class DefaultController extends Controller
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        /**
+        * @Route("/livre", name="livre")
+        */
+        public function LivreTestAction()
+        {
+            $repository = $this->getDoctrine()->getRepository(Livre::class);
+
+            $livre = $repository->find(1);
+
+            var_dump($livre); die();
+        }
+        /**
+         * @Route("/livre", name="livre")
+         */
+        public function auteurTestAction()
+        {
+            $repository = $this->getDoctrine()->getRepository(Livre::class);
+
+            $livre = $repository->find(1);
+
+            var_dump($livre); die();
+        }
+
     }
-}

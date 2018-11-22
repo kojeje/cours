@@ -9,19 +9,38 @@
     namespace AppBundle\Entity;
     use Doctrine\ORM\Mapping as ORM;
     /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * //appelle une classe Entity
+     * -----------------------------
+     * @ORM\ Entity
+     *
+     * //Nomme la classe
+     * ------------------
+     * @ORM\Table(name="category")
      */
     class category
     {
 
         /**
+         * annotations ORM
+         * Type de chaine
+         * ---------------
          * @ORM\Column(type="integer")
+         *
+         * Determine la clé Primaire
+         * --------------------------
          * @ORM\Id
+         *
+         * Auto-incrémente
+         * ---------------
          * @ORM\GeneratedValue(strategy="AUTO")
          */
+
+//      Crée  colonnes de la table (parametres de la class)
+//      -------------------------------------------------------
         private $id;
+//
+//      etc.
+
 
         /**
          * @ORM\Column(type="text")
