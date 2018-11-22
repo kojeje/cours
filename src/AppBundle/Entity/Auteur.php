@@ -44,7 +44,7 @@
          * @ORM\Column(type="string")
          *
          */
-        private $auteur;
+        private $name;
 
         /**
          * @ORM\Column(type="integer")
@@ -56,6 +56,79 @@
          * @ORM\Column(type="integer")
          */
         private $cat_id;
+
+        /**
+         * @return mixed
+         */
+        public function getId()
+        {
+            return $this->id;
+        }
+
+
+        /**
+         * @return mixed
+         */
+        public function getBirthdate()
+        {
+            return $this->birthdate;
+        }
+
+        /**
+         * @param mixed $birthdate
+         */
+        public function setBirthdate($birthdate)
+        {
+            $this->birthdate = $birthdate;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getDeathdate()
+        {
+            return $this->deathdate;
+        }
+
+        /**
+         * @param mixed $deathdate
+         */
+        public function setDeathdate($deathdate)
+        {
+            $this->deathdate = $deathdate;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getBio()
+        {
+            return $this->bio;
+        }
+
+        /**
+         * @param mixed $bio
+         */
+        public function setBio($bio)
+        {
+            $this->bio = $bio;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getName()
+        {
+            return $this->name;
+        }
+
+        /**
+         * @param mixed $name
+         */
+        public function setName($name)
+        {
+            $this->name = $name;
+        }
 
 
 

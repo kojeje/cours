@@ -23,10 +23,15 @@
         private $id;
 
         /**
+         * @ORM\Column(type="text")
+         */
+
+        private $titre;
+
+        /**
          * @ORM\Column(type="date")
          */
         private $parutiondate;
-
 
         /**
          * @ORM\Column(type="text")
