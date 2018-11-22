@@ -2,8 +2,21 @@ body {
     background-color: #191100;
     color:#fff;
 }
-header
+a
+{
+    text-decoration:none;
 }
+
+h1,h2,h3,h4,h5
+{
+    text-align: center;
+}
+ul{
+    text-decoration: none;
+}
+
+header
+
 {
     background-color: #191100;
 }
@@ -102,26 +115,8 @@ section, .pied
 {
     line-height: 60px
 }
-#map iframe
-{
-    width: 100%;
-    margin:0;
-}
-form label, form input
-{
-    display: block;
-    margin:auto;
-}
-.form
-{
-    width: 30%;
-    margin: auto;
-}
-.lbl
-{
-    color: #fff;}
-.submit
-{color:#000;}
+.lorem
+{line-height: 300px;}
 .article a
 {
     color: #fff;
@@ -135,9 +130,29 @@ form label, form input
 .article2 .apercu2 .thumb, .article2 .apercu2 h2
 {
     width: 50%;
-    margin: auto;}
+    margin: auto;
+}
 .article2 .apercu2 p
 {
     width: 45%;
-    margin: auto;}
+    margin: auto;
+}
+.cat
+{
+    width: 80%;
+    margin-left: 20%;
+}
+.l_cat
+{
+    background-color: #ffb630;
+    padding: 20px;
+    border: 2px solid #fff;
+    width: 25%;
+    border-radius: 50px;
+    text-align:center;
+
+}
+.l_cat a{
+    color: #000;
+}
 

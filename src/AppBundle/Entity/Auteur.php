@@ -10,8 +10,8 @@
 
     use Doctrine\ORM\Mapping as ORM;
     /**
-     * @ORM\ Entity
      * @ORM\Table(name="auteur")
+     * @ORM\Entity(repositoryClass="AppBundle\Repository\AuteurRepository")
      */
 
     class Auteur
@@ -45,6 +45,12 @@
          *
          */
         private $name;
+
+        /**
+         * @ORM\Column(type="string")
+         *
+         */
+        private $country;
 
         /**
          * @ORM\Column(type="integer")
@@ -128,6 +134,22 @@
         public function setName($name)
         {
             $this->name = $name;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getCountry()
+        {
+            return $this->country;
+        }
+
+        /**
+         * @param mixed $country
+         */
+        public function setCountry($country)
+        {
+            $this->country = $country;
         }
 
 

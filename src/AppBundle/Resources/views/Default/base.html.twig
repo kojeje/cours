@@ -18,7 +18,23 @@
     <div class="container entete">
         <div class="logo">
             <img src="{{ asset ('img/logo2.png') }}" alt="logo">
-        </div>
+    </div>
+
+        <nav class="cat">
+            <h3>Genres</h3>
+                <ul class="menu">
+                    <li class="l_cat">
+                        <a href="{{ path('livre_genre', {'genre': 'roman'}) }}"><h4>Roman</h4></a>
+                    </li>
+                    <li class="l_cat">
+                        <a href="{{ path('livre_genre', {'genre': 'thriller'}) }}"><h4>Thriller</h4></a>
+                    </li>
+                    <li class="l_cat">
+                        <a href="{{ path('livre_genre', {'genre': 'enfants'}) }}"><h4>Enfants</h4></a>
+                    </li>
+                </ul>
+        </nav>
+
 
     </div>
 </header>
@@ -39,16 +55,16 @@
 <!-- Pied de page -->
 <footer>
     <div class="pied">
-        <h2>
+        <p class="lorem">
             lorem
-        </h2>
+        </p>
         <div class="logo">
             {#fonction "asset"#}
             <img src="{{ asset ('img/logo2.png') }}" alt="logo">
         </div>
-        <h2>
+        <p class="lorem">
             lorem
-        </h2>
+        </p>
     </div>
 </footer>
 

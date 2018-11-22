@@ -20,7 +20,7 @@
 
             $livre = $repository->find(1);
 
-            var_dump($livre); die();
+
         }
         /**
          * @Route("/auteurs", name="auteurs")
@@ -70,6 +70,43 @@
             $repository = $this->getDoctrine()->getRepository(Livre::class);
 
             $livres = $repository->findAll();
+
+            return $this->render("@App/Default/livres.html.twig",
+                [
+                    'livres'=>$livres
+                ]);
+        }
+
+        /**
+         * @Route("/auteur/pays/{country}", name="country")
+         */
+        public function countryTestAction($country)
+
+//       Doctrine fait le lien entre la base de données et la programmation objet
+        {
+//
+            $repository = $this->getDoctrine()->getRepository(Auteur::class);
+//                la methode appelé getAuteurbyCountry créée dans le fichier 'AuteurRepository
+            $auteurs = $repository->getAuteurbyCountry($country);
+
+
+            return $this->render("@App/Default/auteurs.html.twig",
+                [
+                    'auteurs'=>$auteurs
+                ]);
+        }
+        /**
+         * @Route("/livre/genre/{genre}", name="livre_genre")
+         */
+        public function livreGenre($genre)
+
+//       Doctrine fait le lien entre la base de données et la programmation objet
+        {
+//
+            $repository = $this->getDoctrine()->getRepository(Livre::class);
+//                la methode appelé getAuteurbyCountry créée dans le fichier 'AuteurRepository
+            $livres = $repository->getLivrebyGenre($genre);
+
 
             return $this->render("@App/Default/livres.html.twig",
                 [

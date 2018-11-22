@@ -9,7 +9,7 @@
     namespace AppBundle\Entity;
     use Doctrine\ORM\Mapping as ORM;
     /**
-     * @ORM\ Entity
+     * @ORM\Entity(repositoryClass="AppBundle\Repository\LivreRepository")
      * @ORM\Table(name="livre")
      */
 
@@ -44,7 +44,7 @@
          * @ORM\Column(type="text")
          */
 
-        private $editor;
+        private $genre;
 
 
         /**
@@ -122,17 +122,17 @@
         /**
          * @return mixed
          */
-        public function getEditor()
+        public function getGenre()
         {
-            return $this->editor;
+            return $this->genre;
         }
 
         /**
-         * @param mixed $editor
+         * @param mixed $genre
          */
-        public function setEditor($editor)
+        public function setGenre($genre)
         {
-            $this->editor = $editor;
+            $this->genre = $genre;
         }
 
         /**
