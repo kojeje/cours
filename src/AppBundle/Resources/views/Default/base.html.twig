@@ -1,0 +1,56 @@
+{#TEMPLATE DE PAGE#}
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Style.cssz-->
+    <link rel="stylesheet" type="text/css" href="{{ asset ('css/style.css')  }}">
+</head>
+<body>
+<!-- En-tete-->
+<header>
+    <div class="container entete">
+        <div class="logo">
+            <img src="{{ asset ('img/logo2.png') }}" alt="logo">
+        </div>
+
+    </div>
+</header>
+
+{#-------------------#}
+
+{# CONTENU DYNAMIQUE #}
+
+{# Appelle la vues déterminée par la méthode correspondant
+à la requete client  #}
+{% block page %}
+
+    {# Fin de la zone "dynamique" de la page #}
+{% endblock %}
+
+{#-------------------#}
+
+<!-- Pied de page -->
+<footer>
+    <div class="pied">
+        <h2>
+            lorem
+        </h2>
+        <div class="logo">
+            {#fonction "asset"#}
+            <img src="{{ asset ('img/logo2.png') }}" alt="logo">
+        </div>
+        <h2>
+            lorem
+        </h2>
+    </div>
+</footer>
+
+</body>
+</html>

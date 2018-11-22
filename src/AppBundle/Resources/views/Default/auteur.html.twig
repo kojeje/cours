@@ -1,0 +1,15 @@
+{#Lier la vue au template de page #}
+
+{% extends "@App/Default/base.html.twig" %}
+{% block page %}
+    <section class="article2">
+
+        <a class="apercu2" href="{{ path('auteur', {'id': auteur.id}) }}">
+            <article>
+                <h2>{{ auteur.name }}</h2>
+                <p>{{ auteur.bio|raw }}</p>
+            </article>
+        </a>
+
+    </section>
+{% endblock %}

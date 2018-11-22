@@ -1,0 +1,28 @@
+{#Lier la vue au template de page #}
+{% extends "@App/Default/base.html.twig" %}
+
+{% block page %}
+    <section class="post_review">
+        {% for livre in livres %}
+            <a class="apercu" href="{{ path('livres', {'id': livre.id}) }}">
+                <article>
+                    <h2>
+                        {{ livre.titre }}
+                    </h2>
+                    <p>
+                        {{ livre.resume }}
+                    </p>
+                    <p>
+                        <span>
+                            {{ livre.parutiondate|date("j - M - Y") }}
+                        </span>
+                    </p>
+
+                </article>
+            </a>
+
+        {% endfor %}
+    </section>
+
+
+{% endblock %}

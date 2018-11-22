@@ -1,0 +1,143 @@
+body {
+    background-color: #191100;
+    color:#fff;
+}
+header
+}
+{
+    background-color: #191100;
+}
+
+header a, .article2 a
+{
+    text-decoration: none;
+    color: #fff;
+}
+.entete
+{
+    display: flex;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.entete nav
+{
+    width:60%;
+    margin-left: 40%;
+}
+.entete ul
+{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;;
+
+}
+.entete li
+{line-height: 60px;
+    color: #fff;}
+
+.logo
+
+{
+    width: 15%;
+
+}
+.logo img, .thumb img
+{
+    width:100%;
+}
+section, .pied
+{
+    padding-top: 50px;
+
+}
+.post_review
+{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+
+.thumb
+{
+    width: 60%;
+    margin:auto;
+}
+
+.post_review a
+{
+    /*width: 30%;*/
+    background-color: #191100;
+    color : #fff;
+    padding: 20px;
+    margin-top: 20px;
+
+}
+
+.apercu
+{
+    width: 28%;
+    border-radius:50px;
+    border: 3px solid #ffb630;
+    padding: 40px;
+}
+.apercu h2
+{
+    text-align: center;
+}
+
+.apercu p
+{
+    width: 80%;
+    margin: auto;
+}
+.pied
+{
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    background-color: #191100;
+}
+.pied h2
+{
+    line-height: 60px
+}
+#map iframe
+{
+    width: 100%;
+    margin:0;
+}
+form label, form input
+{
+    display: block;
+    margin:auto;
+}
+.form
+{
+    width: 30%;
+    margin: auto;
+}
+.lbl
+{
+    color: #fff;}
+.submit
+{color:#000;}
+.article a
+{
+    color: #fff;
+
+}
+.article2 .apercu2
+{
+    width: 60%;
+    margin: auto;
+}
+.article2 .apercu2 .thumb, .article2 .apercu2 h2
+{
+    width: 50%;
+    margin: auto;}
+.article2 .apercu2 p
+{
+    width: 45%;
+    margin: auto;}
+
