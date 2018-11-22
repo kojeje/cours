@@ -29,6 +29,13 @@
         private $titre;
 
         /**
+         * @ORM\Column(type="text")
+         */
+
+        private $resume;
+
+
+        /**
          * @ORM\Column(type="date")
          */
         private $parutiondate;
@@ -54,6 +61,127 @@
          * @ORM\Column(type="integer")
          */
         private $cat_id;
+
+        /**
+         * @return mixed
+         */
+        public function getId()
+        {
+            return $this->id;
+        }
+
+
+        /**
+         * @return mixed
+         */
+        public function getTitre()
+        {
+            return $this->titre;
+        }
+
+        /**
+         * @param mixed $titre
+         */
+        public function setTitre($titre)
+        {
+            $this->titre = $titre;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getResume()
+        {
+            return $this->resume;
+        }
+
+        /**
+         * @param mixed $resume
+         */
+        public function setResume($resume)
+        {
+            $this->resume = $resume;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getParutiondate()
+        {
+            return $this->parutiondate;
+        }
+
+        /**
+         * @param mixed $parutiondate
+         */
+        public function setParutiondate($parutiondate)
+        {
+            $this->parutiondate = $parutiondate;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getEditor()
+        {
+            return $this->editor;
+        }
+
+        /**
+         * @param mixed $editor
+         */
+        public function setEditor($editor)
+        {
+            $this->editor = $editor;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getPrice()
+        {
+            return $this->price;
+        }
+
+        /**
+         * @param mixed $price
+         */
+        public function setPrice($price)
+        {
+            $this->price = $price;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getAutId()
+        {
+            return $this->aut_id;
+        }
+
+        /**
+         * @param mixed $aut_id
+         */
+        public function setAutId($aut_id)
+        {
+            $this->aut_id = $aut_id;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getCatId()
+        {
+            return $this->cat_id;
+        }
+
+        /**
+         * @param mixed $cat_id
+         */
+        public function setCatId($cat_id)
+        {
+            $this->cat_id = $cat_id;
+        }
 
 
 

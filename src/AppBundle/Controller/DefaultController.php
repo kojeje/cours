@@ -26,11 +26,12 @@
          * @Route("/auteurs", name="auteurs")
          */
         public function auteurTestAction()
-
-//       Doctrine fait le lien entre la base de données et la programmation objet
         {
-            $repository = $this->getDoctrine()->getRepository(Auteur::class);
+// @todo     Cherche tous les auteurs avec instanc de getDoctrine -> methode getRepository
+// @todo      Doctrine fait le lien entre la base de données et la programmation objet
 
+            $repository = $this->getDoctrine()->getRepository(Auteur::class);
+// @todo         findAll = SELECT * FROM auteur
             $auteurs = $repository->findAll();
 
             return $this->render("@App/Default/auteurs.html.twig",
@@ -41,6 +42,7 @@
         /**
          * @Route("/auteur/{id}", name="auteur")
          */
+//        @todo le place holder est utilisé comme parametre $id de la requete doctrine
         public function auteurAction($id)
         {
 //
@@ -57,6 +59,22 @@
                 ]
             );
 
+        }
+        /**
+         * @Route("/livres", name="livres")
+         */
+        public function livresTestAction()
+
+//       Doctrine fait le lien entre la base de données et la programmation objet
+        {
+            $repository = $this->getDoctrine()->getRepository(Livre::class);
+
+            $livres = $repository->findAll();
+
+            return $this->render("@App/Default/livres.html.twig",
+                [
+                    'livres'=>$livres
+                ]);
         }
 
     }
