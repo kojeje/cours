@@ -4,7 +4,7 @@
 {% block page %}
 
     <section class="post_review">
-
+{# boucle for affichan les titres de livre le resumé et la date de parution#}
         {% for livre in livres %}
             <a class="apercu" href="{{ path('livres', {'id': livre.id}) }}">
                 <article>
@@ -15,9 +15,9 @@
                         {{ livre.resume }}
                     </p>
                     <p>
-                        <span>
+                        <em>
                             {{ livre.parutiondate|date("j - M - Y") }}
-                        </span>
+                        </em>
                     </p>
 
                 </article>

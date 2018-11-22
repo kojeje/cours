@@ -19,21 +19,9 @@
         <div class="logo">
             <img src="{{ asset ('img/logo2.png') }}" alt="logo">
     </div>
+        {#@todo !!!!!!NE S'AFFICHE PAS!!!!#}
 
-        <nav class="cat">
-            <h3>Genres</h3>
-                <ul class="menu">
-                    <li class="l_cat">
-                        <a href="{{ path('livre_genre', {'genre': 'roman'}) }}"><h4>Roman</h4></a>
-                    </li>
-                    <li class="l_cat">
-                        <a href="{{ path('livre_genre', {'genre': 'thriller'}) }}"><h4>Thriller</h4></a>
-                    </li>
-                    <li class="l_cat">
-                        <a href="{{ path('livre_genre', {'genre': 'enfants'}) }}"><h4>Enfants</h4></a>
-                    </li>
-                </ul>
-        </nav>
+        {% block content %}{% endblock %}
 
 
     </div>
