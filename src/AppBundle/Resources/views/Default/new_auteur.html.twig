@@ -1,0 +1,25 @@
+{#Lier la vue au template de page #}
+
+{% extends "@App/Default/base.html.twig" %}
+
+
+{% block page %}
+    <div>
+        <form action="" class="new_auteur">
+            <h3></h3>
+
+            <label for="name" class="lbl"></label>
+            <input type="text" name="name"  class="fields">
+
+            <label for="birthdate" class="lbl"></label>
+            <input type="date" class="fields">
+
+            <label for="deathdate" class="lbl"></label>
+            <input type="date" class="fields">
+
+            <label for="bio" class="lbl"></label>
+            <textarea type="text" name="bio" class="fields">
+
+            <input type="submit"></form>
+    </div>
+{% endblock %}

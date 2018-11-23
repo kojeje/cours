@@ -1,0 +1,37 @@
+{#Lier la vue au template de page #}
+{% extends "@App/Default/base.html.twig" %}
+
+{% block page %}
+
+    <section class="post_review">
+{# boucle for affichant les titres de livre le resumé et la date de parution#}
+        {% for livre in livres %}
+                <article class="apercu">
+                    <h2>
+                        {{ livre.titre }}
+                    </h2>
+                    <p>
+                        {{ livre.resume }}
+                    </p>
+                    <p>
+                        <b><i>{{ livre.genre }}</i></b>
+                    </p>
+                    <p>
+                        <em>
+                            {{ livre.parutiondate|date("j - M - Y") }}
+                        </em>
+                    </p>
+
+                    <a href="{{ path('admin_livre', {'id': livre.id}) }}">
+                        <p class="l_cat">Supprimer</p>
+                    </a>
+
+
+                </article>
+
+
+        {% endfor %}
+    </section>
+
+
+{% endblock %}

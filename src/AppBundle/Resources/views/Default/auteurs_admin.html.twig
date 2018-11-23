@@ -1,0 +1,31 @@
+{#Lier la vue au template de page #}
+{% extends "@App/Default/base.html.twig" %}
+
+{% block page %}
+
+    <section class="post_review">
+        {# boucle for affichant les titres de auteur le resumé et la date de parution#}
+        {% for auteur in auteurs %}
+            <article class="apercu">
+                <h2>
+                    {{ auteur.name }}
+                </h2>
+                <p>
+                    {{ auteur.bio }}
+                </p>
+
+
+
+                <a href="{{ path('admin_auteur', {'id': auteur.id}) }}">
+                    <p class="l_cat">Supprimer</p>
+                </a>
+
+
+            </article>
+
+
+        {% endfor %}
+    </section>
+
+
+{% endblock %}
