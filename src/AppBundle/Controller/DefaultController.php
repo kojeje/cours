@@ -165,7 +165,7 @@
 
             $entityManager->persist($livre);
             $entityManager->flush();
-            return new Response("Livre enregistré");
+            return $this->render('@App/Default/new_auteur.html.twig');
          }
         /**
          * @Route("/insert_auteur", name="insert_auteur")
@@ -193,7 +193,7 @@
 
             $entityManager->persist($Auteur);
             $entityManager->flush();
-            return new Response("Auteur enregistré");
+            return $this->render('@App/Default/new_auteur.html.twig');
         }
 
     }
