@@ -143,6 +143,8 @@
         /**
          * @Route("/insert_livre", name="insert_livre")
          */
+
+//        TODO
         public function ajoutLivreAction()
         {
             //recupere l'entity manager de doctrine
@@ -165,7 +167,7 @@
 
             $entityManager->persist($livre);
             $entityManager->flush();
-            return $this->render('@App/Default/new_auteur.html.twig');
+            return new Response('Nouveau livre ajouté');
          }
         /**
          * @Route("/insert_auteur", name="insert_auteur")
@@ -193,7 +195,95 @@
 
             $entityManager->persist($Auteur);
             $entityManager->flush();
-            return $this->render('@App/Default/new_auteur.html.twig');
+            return $this->render('@App/Default/auteurs.html.twig');
         }
 
+        /**
+         * @Route("/suppr_livre", name="suppr_livre")
+         */
+        public function supprLivreAction(){
+            $repository = $this->getDoctrine()->getRepository(Livre::class);
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $livre =$repository->find('1');
+            $entityManager->remove($livre);
+            $entityManager->flush();
+            return new response('livre supprimé');
+            }
+
+        /**
+         * @Route("/suppr_auteur", name="suppr_auteur")
+         */
+        public function supprAuteurAction()
+        {
+            $repository = $this->getDoctrine()->getRepository(Auteur::class);
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $Auteur =$repository->find('1');
+            $entityManager->remove($Auteur);
+            $entityManager->flush();
+            return new response('auteur supprimé');
+        }
+        /**
+         * @Route("/admin/livres", name="admin_livres")
+         */
+        public function livresAdminTestAction()
+
+//       Doctrine fait le lien entre la base de données et la programmation objet
+        {
+            $repository = $this->getDoctrine()->getRepository(Livre::class);
+
+            $livres = $repository->findAll();
+
+            return $this->render("@App/Default/livres_admin.html.twig",
+                [
+                    'livres' => $livres
+                ]);
+        }
+
+
+        /**
+         * @Route("/admin/livre/{id}", name="admin_livre")
+         */
+        public function livreAdminAction($id)
+        {
+            $repository = $this->getDoctrine()->getRepository(Livre::class);
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $Livre =$repository->find($id);
+            $entityManager->remove($Livre);
+            $entityManager->flush();
+            return new response('Livre supprimé');
+        }
+        /**
+         * @Route("/admin/auteurs", name="admin_auteurs")
+         */
+        public function auteurAdminTestAction()
+
+//       Doctrine fait le lien entre la base de données et la programmation objet
+        {
+            $repository = $this->getDoctrine()->getRepository(Auteur::class);
+
+            $auteurs = $repository->findAll();
+
+            return $this->render("@App/Default/auteurs_admin.html.twig",
+                [
+                    'auteurs' => $auteurs
+                ]);
+        }
+
+
+        /**
+         * @Route("/admin/auteur/{id}", name="admin_auteur")
+         */
+        public function auteurAdminAction($id)
+        {
+            $repository = $this->getDoctrine()->getRepository(Auteur::class);
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $Auteur =$repository->find($id);
+            $entityManager->remove($Auteur);
+            $entityManager->flush();
+            return new response('Livre supprimé');
+        }
     }
