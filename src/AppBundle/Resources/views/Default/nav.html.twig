@@ -1,0 +1,19 @@
+
+<nav class="cat">
+    <h3>GENRES</h3>
+    <ul>
+{#           commande path:génère automatiquement l'url en fonction du paramètre choisi#}
+        <li class="l_cat"><a href="{{ path('livre_genre', {'genre': 'roman'}) }}">
+                <h4>Roman</h4>
+            </a></li>
+{#           commande path:génère automatiquement l'url en fonction du paramètre choisi#}
+
+        <li class="l_cat"><a href="{{ path('livre_genre', {'genre': 'thriller'}) }}">
+                <h4>Thriller</h4>
+            </a></li>
+{#           commande path:génère automatiquement l'url en fonction du paramètre choisi#}
+        <li class="l_cat"><a href="{{ path('livre_genre', {'genre': 'enfants'}) }}">
+                <h4>Enfants</h4>
+            </a></li>
+    </ul>
+</nav>
