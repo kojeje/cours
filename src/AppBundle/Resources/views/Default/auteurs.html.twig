@@ -2,7 +2,12 @@
 {% extends "@App/Default/base.html.twig" %}
 
 {% block page %}
+
+    <form action="{{ path('search_auteur') }}">
+        <input type="text" name="search">
+        <input type="submit">
     <section class="post_review">
+
 {# boucle for affichan les noms d'auteur leurs bio et leurs dates (naissance, décès#}
         {% for auteur in auteurs %}
             <a class="apercu" href="{{ path('auteur', {'id': auteur.id}) }}">
@@ -15,7 +20,17 @@
                     </p>
                     <p>
                         <span>
-                            naissance: {{ auteur.birthdate|date("j - M - Y") }} <br>décès: {{ auteur.deathdate|date("j - M - Y") }}
+                            <br>
+                            naissance:  <i class="date">{{ auteur.birthdate|date("j - M - Y") }}</i> <br>
+{#                          Condition : détermine l'affichage ou non de la date de décès (si oui ou non l'auteur est mort
+                             Si la date de décès n'est pas "null": l'auteur est mort...
+                             Donc on affiche la date) #}
+                            {% if auteur.deathdate!=null %}
+{# #}
+                            décès: <i class="date">{{ auteur.deathdate|date("j - M - Y") }}</i>
+                            {% else %}
+
+                            {% endif %}
                         </span>
                     </p>
 

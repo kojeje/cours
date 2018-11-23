@@ -16,7 +16,8 @@
     {
         public function getAuteurbyCountry($country)
         {
-
+//          QueryBuilder => Pour éxecuter des requêtes
+//          Altenatives  : DQL ou NativeQueries (permet de rentrer du SQL pur)
 
             $queryBuilder =$this->createQueryBuilder('a');
 
@@ -29,8 +30,26 @@
                 ->setParameter('country', $country)
 //              recupérer la methode createQueryBuilder dans la variable $query et la passer dans $results
                 ->getQuery();
-//todo                     eq fetch
+//                               eq fetch
             $results = $query->getArrayResult();
             return $results;
         }
+        public function getAuteurbyWord($word)
+        {
+            $queryBuilder = $this->createQueryBuilder('a');
+
+            $query = $queryBuilder
+//              eq SELECT sql
+                ->select('a')
+//              eq WHERE  sql        eq Like        eq OR sql
+                ->where('a.bio LIKE :word OR a.name LIKE :word OR a.country LIKE :word')
+                ->setParameter('word','%'.$word.'%')
+                ->getQuery();
+
+            $results = $query->getArrayResult();
+
+            return $results;
+
+        }
+
 }
