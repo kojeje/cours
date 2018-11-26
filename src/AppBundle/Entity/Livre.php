@@ -57,6 +57,7 @@
          * @ORM\ManyToOne(targetEntity="Auteur")
          */
         private $auteur;
+
         /**
          * @return mixed
          */

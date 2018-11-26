@@ -7,12 +7,23 @@
     <section class="post_review">
 {# boucle for affichant les titres de livre le resumé et la date de parution#}
         {% for livre in livres %}
-            
                 {#container pour chaque article qui s'affiche#}
                     <article class="apercu">
                         <h2>
                             {{ livre.titre }}
                         </h2>
+                        <p>
+
+                            {% if livre.auteur %}
+                        <p>
+
+                            de <i><b class="aut_id">{{ livre.auteur.name }}</b></i>
+
+                        </p>
+                            {% endif %}
+
+
+                        </p>
                         <p>
                             {{ livre.resume }}
                         </p>
@@ -34,7 +45,7 @@
                         <a href="{{ path('livre', {'id': livre.id}) }}">
                             <p class="l_cat">apercu</p>
                         </a>
-                        
+
 
 
                     </article>

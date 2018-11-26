@@ -26,7 +26,9 @@ class LivreRepository extends EntityRepository
                     ->setParameter('genre', $genre)
                     ->getQuery();
 //todo                     eq fetch
-        $results = $query->getArrayResult();
+
+        $results = $query->getResult();
+
         return $results;
     }
 }

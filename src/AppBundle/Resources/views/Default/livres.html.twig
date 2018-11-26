@@ -7,17 +7,23 @@
 {# boucle for affichan les titres de livre le resumé et la date de parution#}
         {% for livre in livres %}
             {#container pour chaque article qui s'affiche#}
-            <a class="apercu" href="{{ path('livres', {'id': livre.id}) }}">
-                <article>
+
+                <article class="apercu">
                     <h2>
                         {{ livre.titre }}
                     </h2>
                     <p>
                         {{ livre.resume }}
                     </p>
+
+                    {% if livre.auteur %}
                     <p>
-                        <i><b>{{ livre.auteur.name }}</b></i>
+                        <a href="{{ path('auteur', {'id': livre.auteur.id}) }}">
+                            de <i><b class="aut_id">{{ livre.auteur.name }}</b></i>
+                        </a>
+
                     </p>
+                    {% endif %}
                     <p>
                         <i><b>{{ livre.genre }}</b></i>
                     </p>
@@ -26,9 +32,12 @@
                             {{ livre.parutiondate|date("j - M - Y") }}
                         </em>
                     </p>
+                    <a href="{{ path('livre', {'id': livre.id}) }}">
+                        <p class="l_cat">apercu</p>
+                    </a>
 
                 </article>
-            </a>
+
 
         {% endfor %}
     </section>
