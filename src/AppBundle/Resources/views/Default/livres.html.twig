@@ -6,6 +6,7 @@
     <section class="post_review">
 {# boucle for affichan les titres de livre le resumé et la date de parution#}
         {% for livre in livres %}
+            {#container pour chaque article qui s'affiche#}
             <a class="apercu" href="{{ path('livres', {'id': livre.id}) }}">
                 <article>
                     <h2>

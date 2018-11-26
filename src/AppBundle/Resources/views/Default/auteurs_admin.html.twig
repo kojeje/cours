@@ -6,22 +6,30 @@
     <section class="post_review">
         {# boucle for affichant les titres de auteur le resumé et la date de parution#}
         {% for auteur in auteurs %}
-            <article class="apercu">
-                <h2>
-                    {{ auteur.name }}
-                </h2>
-                <p>
-                    {{ auteur.bio }}
-                </p>
+
+                {#container pour chaque auteur qui s'affiche#}
+                <article class="apercu">
+                    <h2>
+                        {{ auteur.name }}
+                    </h2>
+                    <p>
+                        {{ auteur.bio }}
+                    </p>
 
 
+                    <a href="{{ path('admin_supp_auteur', {'id': auteur.id}) }}">
+                        <p class="l_cat">Supprimer</p>
+                    </a>
+                    <a href="{{ path('admin_update_auteur', {'id': auteur.id}) }}">
+                        <p class="l_cat">modifier</p>
+                    </a>
+                    <a href="{{ path('auteur', {'id': auteur.id}) }}">
+                        <p class="l_cat">apercu</p>
+                    </a>
 
-                <a href="{{ path('admin_auteur', {'id': auteur.id}) }}">
-                    <p class="l_cat">Supprimer</p>
-                </a>
 
+                </article>
 
-            </article>
 
 
         {% endfor %}

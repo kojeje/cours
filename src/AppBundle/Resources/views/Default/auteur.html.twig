@@ -2,6 +2,8 @@
 
 {% extends "@App/Default/base.html.twig" %}
 {% block page %}
+
+    {#container pour chaque auteur qui s'affiche#}
     <section class="article2">
 {#      la fonction path génère automatiquement l'url en fonction de l'id#}
         <a class="apercu2" href="{{ path('auteur', {'id': auteur.id}) }}">

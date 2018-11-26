@@ -139,6 +139,19 @@
                 'auteurs' => $auteurs
             ]);
         }
+        /**
+         * @Route("/livre-search", name="search_auteur")
+         */
+        public function livreByWordAction(Request $request)
+        {
+            $word = $request->query->get('search');
+            $repository = $this->getDoctrine()->getRepository(Auteur::class);
+            $auteurs = $repository->getAuteurbyWord($word);
+            return $this->render('@App/Default/auteurs.html.twig',
+                [
+                    'auteurs' => $auteurs
+                ]);
+        }
 //Créer
         /**
          * @Route("/insert_livre", name="insert_livre")
@@ -154,8 +167,8 @@
             $livre = new Livre();
 
             // j'utilise les setters de mon entité
-            $livre->setTitre("Le Rouge et le Noir");
-            $livre->setGenre('roman');
+            $livre->setTitre("Jérome Faure et la fracture numérique");
+            $livre->setGenre('thriller');
             $livre->setParutiondate(new \Datetime('25-02-1989'));
             $livre->setResume('Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                     Atque commodi consequatur, culpa,
@@ -181,8 +194,8 @@
             $Auteur = new Auteur();
 
             // j'utilise les setters de mon entité
-            $Auteur->setName("Steve Jobs");
-            $Auteur->setCountry('suisse');
+            $Auteur->setName("Jérôme Faure");
+            $Auteur->setCountry('Le Pian sur Garonne');
             $Auteur->setBirthdate(new \Datetime('25-02-2018'));
             $Auteur->setDeathdate(new \Datetime(''));
             $Auteur->setBio('Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -195,35 +208,35 @@
 
             $entityManager->persist($Auteur);
             $entityManager->flush();
-            return $this->render('@App/Default/auteurs.html.twig');
+            return new Response('Nouvel auteur ajouté');
         }
-
-        /**
-         * @Route("/suppr_livre", name="suppr_livre")
-         */
-        public function supprLivreAction(){
-            $repository = $this->getDoctrine()->getRepository(Livre::class);
-            $entityManager = $this->getDoctrine()->getManager();
-
-            $livre =$repository->find('1');
-            $entityManager->remove($livre);
-            $entityManager->flush();
-            return new response('livre supprimé');
-            }
-
-        /**
-         * @Route("/suppr_auteur", name="suppr_auteur")
-         */
-        public function supprAuteurAction()
-        {
-            $repository = $this->getDoctrine()->getRepository(Auteur::class);
-            $entityManager = $this->getDoctrine()->getManager();
-
-            $Auteur =$repository->find('1');
-            $entityManager->remove($Auteur);
-            $entityManager->flush();
-            return new response('auteur supprimé');
-        }
+//
+//        /**
+//         * @Route("/suppr_livre", name="suppr_livre")
+//         */
+//        public function supprLivreAction(){
+//            $repository = $this->getDoctrine()->getRepository(Livre::class);
+//            $entityManager = $this->getDoctrine()->getManager();
+//
+//            $livre =$repository->find('1');
+//            $entityManager->remove($livre);
+//            $entityManager->flush();
+//            return new response('livre supprimé');
+//            }
+//
+//        /**
+//         * @Route("/suppr_auteur", name="suppr_auteur")
+//         */
+//        public function supprAuteurAction()
+//        {
+//            $repository = $this->getDoctrine()->getRepository(Auteur::class);
+//            $entityManager = $this->getDoctrine()->getManager();
+//
+//            $Auteur =$repository->find('1');
+//            $entityManager->remove($Auteur);
+//            $entityManager->flush();
+//            return new response('auteur supprimé');
+//        }
         /**
          * @Route("/admin/livres", name="admin_livres")
          */
@@ -243,7 +256,7 @@
 
 
         /**
-         * @Route("/admin/livre/{id}", name="admin_livre")
+         * @Route("/admin/supp_livre/{id}", name="admin_livre")
          */
         public function livreAdminAction($id)
         {
@@ -253,7 +266,10 @@
             $Livre =$repository->find($id);
             $entityManager->remove($Livre);
             $entityManager->flush();
-            return new response('Livre supprimé');
+            return $this->render("@App/Default/livres_admin.html.twig",
+                [
+                    'livre' => $Livre
+                ]);
         }
         /**
          * @Route("/admin/auteurs", name="admin_auteurs")
@@ -274,9 +290,9 @@
 
 
         /**
-         * @Route("/admin/auteur/{id}", name="admin_auteur")
+         * @Route("/admin/supp_auteur/{id}", name="admin_supp_auteur")
          */
-        public function auteurAdminAction($id)
+        public function auteurSuppAction($id)
         {
             $repository = $this->getDoctrine()->getRepository(Auteur::class);
             $entityManager = $this->getDoctrine()->getManager();
@@ -284,6 +300,29 @@
             $Auteur =$repository->find($id);
             $entityManager->remove($Auteur);
             $entityManager->flush();
-            return new response('Livre supprimé');
+            return new response('Auteur supprimé');
         }
-    }
+
+        /**
+         * @Route("/admin/update_auteur/{id}", name="admin_update_auteur")
+         */
+        public function auteurUpdateAction($id)
+        {
+        $repository = $this->getDoctrine()->getRepository(Auteur::class);
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $Auteur =$repository->find($id);
+        // j'utilise les setters de mon entité
+        $Auteur->setName("Hervé Vilar");
+        $Auteur->setCountry('Zimbabwe');
+        $Auteur->setBirthdate(new \Datetime('25-03-2018'));
+        $Auteur->setDeathdate(new \Datetime(''));
+        $Auteur->setBio("Le roi de la chanson ringarde se met à l'écriture<br> Le pire évènement littéraire de 2018...<br> A éviter absolument");
+
+
+
+        $entityManager->persist($Auteur);
+        $entityManager->flush();
+        return new Response('Auteur mis à jour');
+        }
+}

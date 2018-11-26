@@ -1,7 +1,7 @@
 
-<nav class="cat">
+<nav class="category">
     <h3>GENRES</h3>
-    <ul>
+    <ul class="cat">
 {#           commande path:génère automatiquement l'url en fonction du paramètre choisi#}
         <li class="l_cat"><a href="{{ path('livre_genre', {'genre': 'roman'}) }}">
                 <h4>Roman</h4>
@@ -12,8 +12,14 @@
                 <h4>Thriller</h4>
             </a></li>
 {#           commande path:génère automatiquement l'url en fonction du paramètre choisi#}
-        <li class="l_cat"><a href="{{ path('livre_genre', {'genre': 'enfants'}) }}">
-                <h4>Enfants</h4>
+        <li class="l_cat"><a href="{{ path('livre_genre', {'genre': 'Humour de merde'}) }}">
+                <h4>Humour de merde</h4>
             </a></li>
+        {#           commande path:génère automatiquement l'url en fonction du paramètre choisi#}
+        <li class="l_cat"><a href="{{ path('livre_genre', {'genre': 'témoignage'}) }}">
+                <h4>Témoignage</h4>
+            </a></li>
+
+
     </ul>
 </nav>
