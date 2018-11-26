@@ -51,9 +51,12 @@
          */
         private $country;
 
+
         /**
-         * @return mixed
+         * @ORM\OneToMany(targetEntity="AppBundle\Entity\Livre", mappedBy="auteur")
          */
+        private $livres;
+
         public function getId()
         {
             return $this->id;
@@ -138,6 +141,22 @@
         public function setCountry($country)
         {
             $this->country = $country;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getLivres()
+        {
+            return $this->livres;
+        }
+
+        /**
+         * @param mixed $livres
+         */
+        public function setLivres($livres)
+        {
+            $this->livres = $livres;
         }
 
 

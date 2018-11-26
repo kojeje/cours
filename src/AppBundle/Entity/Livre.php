@@ -54,9 +54,10 @@
         private $price;
 
         /**
-         * @ORM\ManyToOne(targetEntity="Auteur")
+         * @ORM\ManyToOne(targetEntity="Auteur", inversedBy="livres")
          */
         private $auteur;
+
 
         /**
          * @return mixed
@@ -163,36 +164,6 @@
             $this->price = $price;
         }
 
-        /**
-         * @return mixed
-         */
-        public function getAutId()
-        {
-            return $this->aut_id;
-        }
 
-        /**
-         * @param mixed $aut_id
-         */
-        public function setAutId($aut_id)
-        {
-            $this->aut_id = $aut_id;
-        }
-
-        /**
-         * @return mixed
-         */
-        public function getCatId()
-        {
-            return $this->cat_id;
-        }
-
-        /**
-         * @param mixed $cat_id
-         */
-        public function setCatId($cat_id)
-        {
-            $this->cat_id = $cat_id;
-        }
 
     }

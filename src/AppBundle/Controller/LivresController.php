@@ -18,20 +18,7 @@
 
     class LivresController extends Controller
     {
-        /**
-         * @Route("/livre", name="livre")
-         */
-        public function LivreTestAction()
-        {
-            $repository = $this->getDoctrine()->getRepository(Livre::class);
-
-            $livre = $repository->find(1);
-
-        }
-
-
-
-
+//
 
 
         /**
@@ -52,7 +39,27 @@
             return $this->render("@App/Default/nav.html.twig");
         }
 
+        /**
+         * @Route("/livre/{id}", name="livre")
+         */
+//      le place holder est utilisé comme parametre $id de la requete doctrine
+        public function livreAction($id)
+        {
+//
+//          On retourne le parametre $this->articles en fonction de la valeur de $id (à préciser)
+            $repository = $this->getDoctrine()->getRepository(Livre::class);
 
+            $livre = $repository->find($id);
+
+            return $this->render(
+
+                "@App/Default/livre.html.twig",
+                [
+                    'livre' => $livre
+                ]
+            );
+
+        }
 
         /**
          * @Route("/livre/genre/{genre}", name="livre_genre")

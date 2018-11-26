@@ -12,28 +12,28 @@
                     <h2>
                         {{ livre.titre }}
                     </h2>
-                    <p>
+                    <p class="p1">
                         {{ livre.resume }}
                     </p>
 
                     {% if livre.auteur %}
-                    <p>
+                    <p class="p2">
                         <a href="{{ path('auteur', {'id': livre.auteur.id}) }}">
                             de <i><b class="aut_id">{{ livre.auteur.name }}</b></i>
                         </a>
 
                     </p>
                     {% endif %}
-                    <p>
+                    <p class="p3">
                         <i><b>{{ livre.genre }}</b></i>
                     </p>
-                    <p>
+                    <p class="p4">
                         <em>
                             {{ livre.parutiondate|date("j - M - Y") }}
                         </em>
                     </p>
                     <a href="{{ path('livre', {'id': livre.id}) }}">
-                        <p class="l_cat">apercu</p>
+                        <p class="l_cat3">apercu</p>
                     </a>
 
                 </article>

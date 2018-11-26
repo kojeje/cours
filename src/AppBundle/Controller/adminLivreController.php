@@ -23,7 +23,7 @@
          * @Route("/insert_livre", name="insert_livre")
          */
 
-//        TODO
+
         public function ajoutLivreAction()
         {
             //recupere l'entity manager de doctrine
