@@ -47,12 +47,6 @@
          */
         private $lbl;
 
-        /**
-         * @ORM\Column(type="integer")
-         * @ORM\GeneratedValue(strategy="AUTO")
-         */
-        private $cat_id;
-
 
 
 

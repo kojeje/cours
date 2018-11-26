@@ -163,20 +163,20 @@
             //recupere l'entity manager de doctrine
             $entityManager = $this->getDoctrine()->getManager();
 
+            $repository = $this->getDoctrine()->getRepository(Auteur::class);
+            //On récupère le repository en fonction de l'id
+            $Auteur =$repository->find('4');
             // je cree une nouvelle instance de l'entité livre
             $livre = new Livre();
 
             // j'utilise les setters de mon entité
-            $livre->setTitre("Jérome Faure et la fracture numérique");
-            $livre->setGenre('thriller');
+            $livre->setTitre("Eloge du Jeunisme");
+            $livre->setGenre('Témoignage');
             $livre->setParutiondate(new \Datetime('25-02-1989'));
-            $livre->setResume('Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Atque commodi consequatur, culpa,
-                                    cupiditate eius facere facilis laudantium magni maiores numquam
-                                    odit officia provident quia recusandae rem,
-                                    repellendus rerum sequi tenetur!');
+            $livre->setResume("J'aime pas les vieux, ils puent, ils pètent, ils prennent leur cul pour une trompettes");
 
             $livre->setPrice('30');
+            $livre->setAuteur($Auteur);
 
             $entityManager->persist($livre);
             $entityManager->flush();
@@ -256,7 +256,7 @@
 
 
         /**
-         * @Route("/admin/supp_livre/{id}", name="admin_livre")
+         * @Route("/admin/supp_livre/{id}", name="admin_supp_livre")
          */
         public function livreAdminAction($id)
         {
@@ -270,6 +270,30 @@
                 [
                     'livre' => $Livre
                 ]);
+        }
+        /**
+         * @Route("/admin/update_livre/{id}", name="admin_update_livre")
+         */
+        public function livreUpdateAction($id)
+        {
+            //repository pour récupérer l'entité
+            $repository = $this->getDoctrine()->getRepository(Livre::class);
+            $entityManager = $this->getDoctrine()->getManager();
+
+            //On récupère le repository en fonction de l'id
+            $Livre =$repository->find($id);
+
+            // j'utilise les setters de mon entité
+            $Livre->settitre("Les meilleures blagues de Jean Roucas");
+            $Livre->setresume("C'est nul, c'est de mauvais gout, et c'est pas drôle: Tout le charme de Jean Roucas... Le sensei de la 'blague de merde'");
+            $Livre->setparutiondate(new \Datetime('25-03-2018'));
+
+
+
+
+            $entityManager->persist($Livre);
+            $entityManager->flush();
+            return new Response('Livre mis à jour');
         }
         /**
          * @Route("/admin/auteurs", name="admin_auteurs")
@@ -294,9 +318,11 @@
          */
         public function auteurSuppAction($id)
         {
+            //repository pour récupérer l'entité'
             $repository = $this->getDoctrine()->getRepository(Auteur::class);
+            //R2cupérer $entityManager
             $entityManager = $this->getDoctrine()->getManager();
-
+            //---------------------------------------------------
             $Auteur =$repository->find($id);
             $entityManager->remove($Auteur);
             $entityManager->flush();
@@ -308,10 +334,13 @@
          */
         public function auteurUpdateAction($id)
         {
+        //repository pour récupérer l'entité
         $repository = $this->getDoctrine()->getRepository(Auteur::class);
         $entityManager = $this->getDoctrine()->getManager();
 
+        //On récupère le repository en fonction de l'id
         $Auteur =$repository->find($id);
+
         // j'utilise les setters de mon entité
         $Auteur->setName("Hervé Vilar");
         $Auteur->setCountry('Zimbabwe');

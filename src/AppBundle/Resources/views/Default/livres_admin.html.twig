@@ -7,7 +7,7 @@
     <section class="post_review">
 {# boucle for affichant les titres de livre le resumé et la date de parution#}
         {% for livre in livres %}
-            <a class="apercu" href="{{ path('livres', {'id': livre.id}) }}">
+            
                 {#container pour chaque article qui s'affiche#}
                     <article class="apercu">
                         <h2>
@@ -25,12 +25,16 @@
                             </em>
                         </p>
 
-                        <a href="{{ path('admin_livre', {'id': livre.id}) }}">
+                        <a href="{{ path('admin_supp_livre', {'id': livre.id}) }}">
                             <p class="l_cat">Supprimer</p>
                         </a>
-                        <a href="{{ path('admin_livre', {'id': livre.id}) }}">
-                            <p class="l_cat">Modifier</p>
+                        <a href="{{ path('admin_update_livre', {'id': livre.id}) }}">
+                            <p class="l_cat">modifier</p>
                         </a>
+                        <a href="{{ path('livre', {'id': livre.id}) }}">
+                            <p class="l_cat">apercu</p>
+                        </a>
+                        
 
 
                     </article>

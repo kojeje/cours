@@ -8,6 +8,7 @@
 
     namespace AppBundle\Entity;
     use Doctrine\ORM\Mapping as ORM;
+    use AppBundle\Entity\Auteur;
     /**
      * @ORM\Entity(repositoryClass="AppBundle\Repository\LivreRepository")
      * @ORM\Table(name="livre")
@@ -53,21 +54,31 @@
         private $price;
 
         /**
-         * @ORM\Column(type="integer")
+         * @ORM\ManyToOne(targetEntity="Auteur")
          */
-        private $aut_id;
-
-        /**
-         * @ORM\Column(type="integer")
-         */
-        private $cat_id;
-
+        private $auteur;
         /**
          * @return mixed
          */
         public function getId()
         {
             return $this->id;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getAuteur()
+        {
+            return $this->auteur;
+        }
+
+        /**
+         * @param mixed $auteur
+         */
+        public function setAuteur($auteur)
+        {
+            $this->auteur = $auteur;
         }
 
 
@@ -182,7 +193,5 @@
         {
             $this->cat_id = $cat_id;
         }
-
-
 
     }

@@ -52,16 +52,7 @@
          */
         private $country;
 
-        /**
-         * @ORM\Column(type="integer")
-         * * @ORM\GeneratedValue(strategy="AUTO")
-         */
-        private $aut_id;
 
-        /**
-         * @ORM\Column(type="integer")
-         */
-        private $cat_id;
 
         /**
          * @return mixed

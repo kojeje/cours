@@ -1,0 +1,22 @@
+
+<nav class="category1">
+    <form action="{{ path('search_auteur') }}">
+        <label class="lbl_search" for="search">recherche</label>
+        <input type="text" name="search">
+        <input type="submit">
+    </form>
+
+    <ul class="cat_2">
+{#           commande path:génère automatiquement l'url en fonction du paramètre choisi#}
+        <li class="l_cat2"><a href="{{ path('auteurs') }}">
+                <h4>Auteurs</h4>
+            </a></li>
+{#           commande path:génère automatiquement l'url en fonction du paramètre choisi#}
+
+        <li class="l_cat2"><a href="{{ path('livres') }}">
+                <h4>Livres</h4>
+            </a></li>
+{#           commande path:génère automatiquement l'url en fonction du paramètre choisi#}
+
+    </ul>
+</nav>
