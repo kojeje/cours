@@ -118,9 +118,9 @@
         {
             $livre= new Livre();
             $form=$this->createForm(LivreType::class, $livre);
-            return $this->render("@App/Defaul/ajout_livre_admin.html.twig",
+            return $this->render("@App/Default/ajout_livre_admin.html.twig",
                 [
-                    'form'=>$form->createView()
+                    'formLivre'=>$form->createView()
                 ]
             );
         }
