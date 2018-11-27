@@ -15,7 +15,7 @@ ul{
     list-style-type: none;
 }
 
-input
+input, textarea, .genre, .select
 {
     color:#000;
 }
@@ -28,7 +28,7 @@ header
     -webkit-background-size: cover;
     background-size: cover;
     border-bottom:10px solid #999;
-    height:100px;
+    height:150px;
 }
 
 
@@ -59,6 +59,7 @@ header a
 {
     width: 5%;
     height:auto;
+    margin-top: 0;
 
 
 }
@@ -146,6 +147,11 @@ section, .pied
     color: #fff;
 
 }
+
+button[type="submit"]
+{
+    color:#000;
+}
 .article2 .apercu2
 {
     width: 60%;
@@ -192,7 +198,7 @@ section, .pied
     background-color: #ffb630;
     color:white;
     border: 2px solid #fff;
-    color:#000;
+
 
 
 }
@@ -288,13 +294,47 @@ section, .pied
 {
     color:aqua;
 }
-
-#appbundle_livre label
+#appbundle_livre
 {
-    ;
+    margin-left: 35%;
+    width: 70%;
 }
-#appbundle_livre input, #appbundle_livre label
+
+#appbundle_livre textarea, #appbundle_livre label
 {
     margin-right: 20px;
+    display: block;
 
+
+}
+.required
+{
+    margin-top: 20px;
+}
+.title, .resume, #appbundle_livre_parutiondate
+{
+    width: 50%;
+
+}
+#appbundle_livre_parutiondate
+{
+
+    display: flex;
+    justify-content: space-around;
+
+
+}
+#appbundle_livre select
+{
+    width: 30%;
+}
+#appbundle_livre label
+
+{
+    display: block;
+    vertical-align: top;
+}
+.f_type
+{
+    padding: 15px;
 }

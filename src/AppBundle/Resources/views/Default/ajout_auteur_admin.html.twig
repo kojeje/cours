@@ -12,7 +12,39 @@
             <h2>Entrez nouvel auteur</h2>
 
 
-                {{ form(formAuteur) }}
+            {{ form_start(formAuteur, {'attr': {id:'appbundle_livre'}}) }}
+
+            <div class="f_type">
+                {{ form_label(formAuteur.name) }}
+                {{ form_widget(formAuteur.name, {'attr': {"class":'title'}}) }}
+            </div>
+
+            <div class="f_type">
+                {{ form_label(formAuteur.bio) }}
+                {{ form_widget(formAuteur.bio, {'attr': {"class":'bio'}}) }}
+            </div>
+
+            <div class="f_type">
+                {{ form_label(formAuteur.birthdate) }}
+                {{ form_widget(formAuteur.birthdate, {'attr': {"class":'birthdate'}}) }}
+            </div>
+            <div class="f_type">
+                {{ form_label(formAuteur.deathdate) }}
+                {{ form_widget(formAuteur.deathdate, {'attr': {"class":'deathdate'}}) }}
+            </div>
+            <div class="f_type">
+                {{ form_label(formAuteur.country) }}
+                {{ form_widget(formAuteur.country, {'attr': {"class":'country'}}) }}
+            </div>
+            <div class="f_type">
+
+                {{ form_widget(formAuteur.submit, { 'label': 'soumettre' },{'attr': {"class":'submit'} }) }}
+            </div>
+
+
+            {#{{ form_label(formLivre.auteur) }}#}
+            {#{{ form_widget(formLivre.auteur) }}#}
+            {{ form_end(formAuteur) }}
 
 
 

@@ -12,7 +12,49 @@
             <h2>Entrez nouveau livre</h2>
 
 
-                {{ form(formLivre) }}
+                {#{{ form(formLivre) }}#}
+
+
+
+
+            {{ form_start(formLivre, {'attr': {id:'appbundle_livre'}}) }}
+
+            <div class="f_type">
+                {{ form_label(formLivre.titre) }}
+                {{ form_widget(formLivre.titre, {'attr': {"class":'title'}}) }}
+            </div>
+
+            <div class="f_type">
+            {{ form_label(formLivre.resume) }}
+            {{ form_widget(formLivre.resume, {'attr': {"class":'resume'}}) }}
+            </div>
+            <div class="f_type">
+            {{ form_label(formLivre.genre) }}
+
+            {{ form_widget(formLivre.genre, {'attr': {"class":'genre'}}) }}
+            </div>
+            <div class="f_type">
+            {{ form_label(formLivre.price) }}
+
+            {{ form_widget(formLivre.price, {'attr': {"class":'price'}}) }}
+            </div>
+            <div class="f_type">
+                {{ form_label(formLivre.parutiondate) }}
+
+                {{ form_widget(formLivre.parutiondate, {'attr': {"class":'parutiondate'}}) }}
+            </div>
+            <div class="f_type">
+                {{ form_label(formLivre.auteur) }}
+
+                {{ form_widget(formLivre.auteur, {'attr': {"class":'select'}}) }}
+
+                {{ form_widget(formLivre.submit, { 'label': 'soumettre' },{'attr': {"class":'submit'} }) }}
+            </div>
+
+
+            {#{{ form_label(formLivre.auteur) }}#}
+            {#{{ form_widget(formLivre.auteur) }}#}
+            {{ form_end(formLivre) }}
 
 
 
