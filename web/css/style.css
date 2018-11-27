@@ -288,3 +288,13 @@ section, .pied
 {
     color:aqua;
 }
+
+#appbundle_livre label
+{
+    ;
+}
+#appbundle_livre input, #appbundle_livre label
+{
+    margin-right: 20px;
+
+}

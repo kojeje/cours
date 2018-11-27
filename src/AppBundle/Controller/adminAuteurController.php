@@ -10,6 +10,7 @@
 
     use AppBundle\Entity\Auteur;
     use AppBundle\Entity\Livre;
+    use AppBundle\Form\AuteurType;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Response;
@@ -106,6 +107,20 @@
             $entityManager->persist($Auteur);
             $entityManager->flush();
             return new Response('Auteur mis à jour');
+        }
+
+        /**
+         * @Route("/admin/ajout_auteur", name="ajout_auteur_admin")
+         */
+        public function adminAjoutAuteur ()
+        {
+            $auteur= new Auteur();
+            $form=$this->createForm(AuteurType::class, $auteur);
+            return $this->render("@App/Default/ajout_auteur_admin.html.twig",
+                [
+                    'formAuteur'=>$form->createView()
+                ]
+            );
         }
 
         /**
