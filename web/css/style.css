@@ -22,8 +22,16 @@ input
 header
 
 {
-    background-color: #191100;
+    background-image: url("/web/img/130-8.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    border-bottom:10px solid #999;
+    height:100px;
 }
+
+
 header a
 {
     color: #000;
@@ -41,6 +49,7 @@ header a
     padding-top: 50px;
     padding-bottom: 50px;
     width: 100%;
+    height: 100px;
 
 
 
@@ -48,7 +57,9 @@ header a
 .logo
 
 {
-    width: 10%;
+    width: 5%;
+    height:auto;
+
 
 }
 
@@ -159,12 +170,42 @@ section, .pied
 }
 .category1 form
 {
-    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+    height: 50px;
+    padding:10px;
+    background-color: #191100;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+
+
 }
-.lbl_search
+.form_search input[type='submit']
 {
-    padding: 10px;
+    height: 25px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-color: #ffb630;
+    color:white;
+    border: 2px solid #fff;
+    color:#000;
+
+
 }
+.search
+{
+    text-align: center;
+    height:25px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    border:2px solid #999999;
+}
+
 .cat
 {
 
@@ -186,8 +227,13 @@ section, .pied
     background-color: #ffb630;
     margin: 20px;
     border: 2px solid #fff;
-    border-radius: 50px;
+    border-radius: 10px;
     text-align:center;
+}
+.l_cat2
+{
+    padding-bottom: 10px;
+
 }
 .l_cat
 {
@@ -206,9 +252,9 @@ section, .pied
     text-align: center;
     font-weight: bold;
     border: 2px solid #fff;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
     color:#000;
     
     background:#ffb630;

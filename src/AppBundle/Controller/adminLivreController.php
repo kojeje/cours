@@ -12,6 +12,7 @@
 
     use AppBundle\Entity\Auteur;
     use AppBundle\Entity\Livre;
+    use AppBundle\Form\LivreType;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Response;
@@ -108,6 +109,20 @@
             $entityManager->persist($Livre);
             $entityManager->flush();
             return new Response('Livre mis à jour');
+        }
+
+        /**
+         * @Route("/admin/ajout_livre", name="ajout_livre_admin")
+         */
+        public function adminAjoutLivre ()
+        {
+            $livre= new Livre();
+            $form=$this->createForm(LivreType::class, $livre);
+            return $this->render("@App/Defaul/ajout_livre_admin.html.twig",
+                [
+                    'form'=>$form->createView()
+                ]
+            );
         }
 
 //

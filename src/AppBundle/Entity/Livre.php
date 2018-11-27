@@ -53,10 +53,10 @@
          */
         private $price;
 
-        /**
-         * @ORM\ManyToOne(targetEntity="Auteur", inversedBy="livres")
-         */
-        private $auteur;
+//        /**
+//         * @ORM\ManyToOne(targetEntity="Auteur", inversedBy="livres")
+//         */
+//        private $auteur;
 
 
         /**
@@ -66,23 +66,23 @@
         {
             return $this->id;
         }
-
-        /**
-         * @return mixed
-         */
-        public function getAuteur()
-        {
-            return $this->auteur;
-        }
-
-        /**
-         * @param mixed $auteur
-         */
-        public function setAuteur($auteur)
-        {
-            $this->auteur = $auteur;
-        }
-
+//
+//        /**
+//         * @return mixed
+//         */
+//        public function getAuteur()
+//        {
+//            return $this->auteur;
+//        }
+//
+//        /**
+//         * @param mixed $auteur
+//         */
+//        public function setAuteur($auteur)
+//        {
+//            $this->auteur = $auteur;
+//        }
+//
 
         /**
          * @return mixed
