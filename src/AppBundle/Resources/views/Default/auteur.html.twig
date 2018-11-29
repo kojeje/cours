@@ -12,7 +12,7 @@
                 <h2>{{ auteur.name }}</h2>
 {#              (ici 'bio de l'auteur'#}
                 <p>{{ auteur.bio }}</p>
-                <p>Livres de l'auteur</p>
+                <h4>Livres de l'auteur</h4>
                 {% for livre in auteur.livres %}
                 <a  href="{{ path('livre', {'id': livre.id}) }}">
                     <p class="p1">{{ livre.titre }}</p>

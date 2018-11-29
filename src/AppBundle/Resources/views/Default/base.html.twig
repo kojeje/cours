@@ -30,7 +30,13 @@
 {#-------------------#}
 
 {# CONTENU DYNAMIQUE #}
-</div>
+<div class="flash">
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}</div>
+<div>
 
 
 {% include '@App/Default/nav.html.twig' %}

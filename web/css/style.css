@@ -17,7 +17,12 @@ ul{
 
 input, textarea, .genre, .select
 {
+    display: block;
     color:#000;
+}
+#appbundle_livre_img
+{
+    color:#fff;
 }
 header
 
@@ -29,6 +34,8 @@ header
     background-size: cover;
     border-bottom:10px solid #999;
     height:150px;
+    position: sticky;
+    top: 0;
 }
 
 
@@ -163,11 +170,14 @@ button[type="submit"]
     width: 50%;
     margin: auto;
 }
-.article2 .apercu2 p
+.article2 .apercu2 .p1, .article2 .apercu2 h4
 {
-    width: 45%;
+    width: 50%;
     margin: auto;
+    text-align: center;
 }
+
+
 .category1
 {
     width: 70%;
@@ -272,12 +282,12 @@ button[type="submit"]
 .p1
 {
     height: 60%;
-    padding-top: 30px;
+    padding-top: 10px;
     color:aqua;
 }
 .l_cat2
 {
-    width: 45%;
+    width: 50%;
     height: 40px;
 }
 
@@ -337,4 +347,13 @@ button[type="submit"]
 .f_type
 {
     padding: 15px;
+}
+
+.flash
+{
+    text-align: center;
+    font-size: 20px;
+    color: #000;
+    color: #191100;
+    background-image: linear-gradient(to right, #ffb630, #edb937, #dcbc40, #ccbd4b, #bebd56);
 }

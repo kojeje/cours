@@ -17,40 +17,48 @@
 
 
 
-            {{ form_start(formLivre, {'attr': {id:'appbundle_livre'}}) }}
+            {{ form_start(formLivre, {attr: {novalidate: 'novalidate'}}) }}
 
             <div class="f_type">
+                {{ form_errors(formLivre.titre) }}
                 {{ form_label(formLivre.titre) }}
                 {{ form_widget(formLivre.titre, {'attr': {"class":'title'}}) }}
             </div>
 
             <div class="f_type">
-            {{ form_label(formLivre.resume) }}
-            {{ form_widget(formLivre.resume, {'attr': {"class":'resume'}}) }}
+                {{ form_errors(formLivre.resume) }}
+                {{ form_label(formLivre.resume) }}
+                {{ form_widget(formLivre.resume, {'attr': {"class":'resume'}}) }}
             </div>
             <div class="f_type">
-            {{ form_label(formLivre.genre) }}
-
-            {{ form_widget(formLivre.genre, {'attr': {"class":'genre'}}) }}
+                {{ form_errors(formLivre.genre) }}
+                {{ form_label(formLivre.genre) }}
+                {{ form_widget(formLivre.genre, {'attr': {"class":'genre'}}) }}
             </div>
             <div class="f_type">
-            {{ form_label(formLivre.price) }}
-
-            {{ form_widget(formLivre.price, {'attr': {"class":'price'}}) }}
+                {{ form_errors(formLivre.price) }}
+                {{ form_label(formLivre.price) }}
+                {{ form_widget(formLivre.price, {'attr': {"class":'price'}}) }}
             </div>
             <div class="f_type">
+                {{ form_errors(formLivre.parutiondate) }}
                 {{ form_label(formLivre.parutiondate) }}
-
                 {{ form_widget(formLivre.parutiondate, {'attr': {"class":'parutiondate'}}) }}
             </div>
             <div class="f_type">
+                {{ form_errors(formLivre.auteur) }}
                 {{ form_label(formLivre.auteur) }}
-
                 {{ form_widget(formLivre.auteur, {'attr': {"class":'select'}}) }}
 
-                {{ form_widget(formLivre.submit, { 'label': 'soumettre' },{'attr': {"class":'submit'} }) }}
-            </div>
+            </div><div class="f_type">
+                {{ form_errors(formLivre.img) }}
+                {{ form_label(formLivre.img) }}
+                {{ form_widget(formLivre.img, {'attr': {"class":'select'}}) }}
 
+            </div>
+            <div class="f_type">
+            {{ form_widget(formLivre.submit, { 'label': 'soumettre' },{'attr': {"class":'submit'} }) }}
+            </div>
 
             {#{{ form_label(formLivre.auteur) }}#}
             {#{{ form_widget(formLivre.auteur) }}#}

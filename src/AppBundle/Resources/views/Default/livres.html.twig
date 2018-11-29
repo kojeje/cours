@@ -12,18 +12,21 @@
                     <h2>
                         {{ livre.titre }}
                     </h2>
+
+                    {% if livre.auteur %}
+                        <p class="p2">
+                            <a href="{{ path('auteur', {'id': livre.auteur.id}) }}">
+                                de <i><b class="aut_id">{{ livre.auteur.name }}</b></i>
+                            </a>
+
+                        </p>
+                    {% endif %}
+
                     <p class="p1">
                         {{ livre.resume }}
                     </p>
 
-                    {% if livre.auteur %}
-                    <p class="p2">
-                        <a href="{{ path('auteur', {'id': livre.auteur.id}) }}">
-                            de <i><b class="aut_id">{{ livre.auteur.name }}</b></i>
-                        </a>
 
-                    </p>
-                    {% endif %}
                     <p class="p3">
                         <i><b>{{ livre.genre }}</b></i>
                     </p>

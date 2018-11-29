@@ -31,4 +31,21 @@ class LivreRepository extends EntityRepository
 
         return $results;
     }
+//    public function getLivrebyWord($word)
+//    {
+//        $queryBuilder = $this->createQueryBuilder('a');
+//
+//        $query = $queryBuilder
+////              eq SELECT sql
+//            ->select('a')
+////              eq WHERE  sql        eq Like        eq OR sql
+//            ->where('a.bio LIKE :word OR a.name LIKE :word OR a.country LIKE :word')
+//            ->setParameter('word','%'.$word.'%')
+//            ->getQuery();
+//
+//        $results = $query->getArrayResult();
+//
+//        return $results;
+//
+//    }
 }

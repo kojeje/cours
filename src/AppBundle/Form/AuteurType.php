@@ -18,7 +18,13 @@ class AuteurType extends AbstractType
     {
         $builder
             ->add('birthdate', DateType::class, array('widget' => 'single_text', 'format' => 'yyyy-MM-dd'))
-            ->add('deathdate', DateType::class, array('widget' => 'single_text', 'format' => 'yyyy-MM-dd'))
+            ->add('deathdate', DateType::class,
+                array(
+                    'widget' => 'single_text',
+                    'format' => 'yyyy-MM-dd',
+                    'required' => false
+                )
+            )
             ->add('bio', TextareaType::class, array('attr'=>
                 [
                     'placeholder'=>'Entrez la bio'

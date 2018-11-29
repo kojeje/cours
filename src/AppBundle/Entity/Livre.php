@@ -8,7 +8,8 @@
 
     namespace AppBundle\Entity;
     use Doctrine\ORM\Mapping as ORM;
-    use AppBundle\Entity\Auteur;
+    use Symfony\Component\Validator\Constraints as Assert;
+
     /**
      * @ORM\Entity(repositoryClass="AppBundle\Repository\LivreRepository")
      * @ORM\Table(name="livre")
@@ -24,7 +25,13 @@
         private $id;
 
         /**
-         * @ORM\Column(type="text")
+         * @ORM\Column(type="string")
+         * @Assert\Length(
+         *      min = 2,
+         *      max = 50,
+         *      minMessage = "Longueur minimum {{ limit }} caractères",
+         *      maxMessage = "Longueur maximum cannot be longer than {{ limit }} caractères"
+         * )
          */
 
         private $titre;
@@ -58,6 +65,14 @@
          */
         private $auteur;
 
+        /**
+         * @ORM\Column(type="string", nullable=true)
+         *
+         */
+        private $img;
+//__________________________________________________________________________________
+
+//                              GETTERS SETTERS
 
         /**
          * @return mixed
@@ -163,6 +178,21 @@
         {
             $this->price = $price;
         }
+        /**
+         * @return mixed
+         */
+        public function getImg()
+        {
+            return $this->img;
+        }
+        /**
+         * @param mixed $img
+         */
+        public function setImg($img)
+        {
+            $this->img = $img;
+        }
+
 
 
 

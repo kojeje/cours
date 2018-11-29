@@ -90,7 +90,7 @@
         {
             $word = $request->query->get('search');
             $repository = $this->getDoctrine()->getRepository(Auteur::class);
-            $auteurs = $repository->getAuteurbyWord($word);
+            $auteurs = $repository->getLivrebyWord($word);
             return $this->render('@App/Default/auteurs.html.twig',
                 [
                     'auteurs' => $auteurs

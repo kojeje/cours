@@ -2,12 +2,13 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\AppBundle;
+use     AppBundle\AppBundle;
 use AppBundle\Entity\Auteur;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -40,6 +41,7 @@ class LivreType extends AbstractType
                 ]
             )
             ->add('price')
+            ->add('img', FileType::class)
             ->add('submit', SubmitType::class)
         ;
 

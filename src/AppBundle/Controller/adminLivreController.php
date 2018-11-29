@@ -9,8 +9,10 @@
 
     namespace AppBundle\Controller;
 
+//    @todo voir les contraintes password
 
-    use AppBundle\Entity\Auteur;
+
+
     use AppBundle\Entity\Livre;
     use AppBundle\Form\LivreType;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,35 +22,35 @@
 
     class adminLivreController extends Controller
     {
-        /**
-         * @Route("/insert_livre", name="insert_livre")
-         */
-
-
-        public function ajoutLivreAction()
-        {
-            //recupere l'entity manager de doctrine
-            $entityManager = $this->getDoctrine()->getManager();
-
-            $repository = $this->getDoctrine()->getRepository(Auteur::class);
-            //On récupère le repository en fonction de l'id
-            $Auteur = $repository->find('4');
-            // je cree une nouvelle instance de l'entité livre
-            $livre = new Livre();
-
-            // j'utilise les setters de mon entité
-            $livre->setTitre("Eloge du Jeunisme");
-            $livre->setGenre('Témoignage');
-            $livre->setParutiondate(new \Datetime('25-02-1989'));
-            $livre->setResume("J'aime pas les vieux, ils puent, ils pètent, ils prennent leur cul pour une trompettes");
-
-            $livre->setPrice('30');
-            $livre->setAuteur($Auteur);
-
-            $entityManager->persist($livre);
-            $entityManager->flush();
-            return new Response('Nouveau livre ajouté');
-        }
+//        /**
+//        /* * @Route("/insert_livre", name="insert_livre")
+//         */
+//
+//
+//        public function ajoutLivreAction()
+//        {
+//            //recupere l'entity manager de doctrine
+//            $entityManager = $this->getDoctrine()->getManager();
+//
+//            $repository = $this->getDoctrine()->getRepository(Auteur::class);
+//            //On récupère le repository en fonction de l'id
+//            $Auteur = $repository->find('4');
+//            // je cree une nouvelle instance de l'entité livre
+//            $livre = new Livre();
+//
+//            // j'utilise les setters de mon entité
+//            $livre->setTitre("Eloge du Jeunisme");
+//            $livre->setGenre('Témoignage');
+//            $livre->setParutiondate(new \Datetime('25-02-1989'));
+//            $livre->setResume("J'aime pas les vieux, ils puent, ils pètent, ils prennent leur cul pour une trompettes");
+//
+//            $livre->setPrice('30');
+//            $livre->setAuteur($Auteur);
+//
+//            $entityManager->persist($livre);
+//            $entityManager->flush();
+//            return new Response('Nouveau livre ajouté');
+//        }
         /**
          * @Route("/admin/livres", name="admin_livres")
          */
@@ -83,46 +85,141 @@
                     'livre' => $Livre
                 ]);
         }
+//        /**
+//         * @Route("/admin/update_livre/{id}", name="admin_update_livre")
+//         */
+//        public function livreUpdateAction($id)
+//        {
+//            //repository pour récupérer l'entité
+//            $repository = $this->getDoctrine()->getRepository(Livre::class);
+//            $entityManager = $this->getDoctrine()->getManager();
+//
+//            $auteurRepository = $this->getDoctrine()->getRepository(Auteur::class);
+//            $auteur = $auteurRepository->find(5);
+//
+//            //On récupère le repository en fonction de l'id
+//            $Livre =$repository->find($id);
+//
+//            // j'utilise les setters de mon entité
+//            $Livre->settitre("titre modifié, ajout auteur");
+//            $Livre->setresume("C'est nul, c'est de mauvais gout, et c'est pas drôle: Tout le charme de Jean Roucas... Le sensei de la 'blague de merde'");
+//            $Livre->setparutiondate(new \Datetime('25-03-2018'));
+//            $Livre->setAuteur($auteur);
+//
+//
+//
+//            $entityManager->persist($Livre);
+//            $entityManager->flush();
+//            return new Response('Livre mis à jour');
+//        }
+
         /**
-         * @Route("/admin/update_livre/{id}", name="admin_update_livre")
+         * @Route("/admin/ajout_livre_form", name="ajout_livre_form")
          */
-        public function livreUpdateAction($id)
+
+        public function formAjoutLivre(Request $request)
         {
-            //repository pour récupérer l'entité
-            $repository = $this->getDoctrine()->getRepository(Livre::class);
-            $entityManager = $this->getDoctrine()->getManager();
+            $form = $this->createForm(LivreType::class, new Livre());
 
-            $auteurRepository = $this->getDoctrine()->getRepository(Auteur::class);
-            $auteur = $auteurRepository->find(5);
+            $form->handleRequest($request);
 
-            //On récupère le repository en fonction de l'id
-            $Livre =$repository->find($id);
+            //Verification que le formulaire est bien envoyé
+            //Si le formulaire est envoyé
+            if ($form->isSubmitted() )
+            {
+                // Si l'envoi du formulaire est valide
+                if ($form->isValid()){
 
-            // j'utilise les setters de mon entité
-            $Livre->settitre("titre modifié, ajout auteur");
-            $Livre->setresume("C'est nul, c'est de mauvais gout, et c'est pas drôle: Tout le charme de Jean Roucas... Le sensei de la 'blague de merde'");
-            $Livre->setparutiondate(new \Datetime('25-03-2018'));
-            $Livre->setAuteur($auteur);
+                    $livre = $form->getData();
+                    $file = $livre->getImg();
+
+                    $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+
+                    // Move the file to the directory where brochures are stored
+                    try {
+                        $file->move(
+                            $this->getParameter('img_directory'),
+                            $fileName
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+
+                    // updates the 'brochure' property to store the PDF file name
+                    // instead of its contents
+                    $livre->setImg($fileName);
 
 
+                    // je recupere une entité grace aux donnees envoyees
+                    //par le formulaire
 
-            $entityManager->persist($Livre);
-            $entityManager->flush();
-            return new Response('Livre mis à jour');
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($livre);
+                    $entityManager->flush();
+
+//                  insertion message flash
+                    $this->addFlash(
+                        //@todo approfondir le type:''
+                        'notice',
+                        'Your changes were saved!'
+                    );
+                //Sinon
+                } else {
+                    //insertion message flash
+                   $this->addFlash(
+                       'notice',
+                    'Error'
+                   );
+                }
+            }
+            //affiche le formulaire
+            return $this->render("@App/Default/ajout_livre_admin.html.twig",
+                [
+                    'formLivre' => $form->createView()
+                ]
+            );
         }
 
         /**
-         * @Route("/admin/ajout_livre", name="ajout_livre_admin")
+         * @Route("/admin/update_livre_form/{id}", name="update_livre_form")
          */
-        public function adminAjoutLivre ()
+
+        public function formUpdateLivre(Request $request, $id)
         {
-            $livre= new Livre();
-            $form=$this->createForm(LivreType::class, $livre);
+
+            //repository pour récupérer l'entité
+            $repository = $this->getDoctrine()->getRepository(Livre::class);
+            //dans livre, on récupèr ele repository en fonction de l'id
+            $livre = $repository->find($id);
+            // Création du formulaire
+            $form = $this->createForm(LivreType::class, $livre);
+            // On recupere les données du formulaire
+            $form->handleRequest($request);
+
+            //Verification que le formulaire est bien envoyé
+            if ($form->isSubmitted() && $form->isValid())
+
+
+            {
+
+                // je recupere une entité grace aux donnees envoyees
+                //par le formulaire
+                $livre = $form->getData();
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($livre);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('admin_livres');
+
+
+            }
             return $this->render("@App/Default/ajout_livre_admin.html.twig",
                 [
-                    'formLivre'=>$form->createView()
+                    'formLivre' => $form->createView()
                 ]
             );
+
+
         }
 
 //
@@ -138,6 +235,13 @@
 //            $entityManager->flush();
 //            return new response('livre supprimé');
 //            }
+
+    private function generateUniqueFileName()
+    {
+        // md5() reduces the similarity of the file names generated by
+        // uniqid(), which is based on timestamps
+        return md5(uniqid());
+    }
 //
 //
     }

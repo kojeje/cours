@@ -10,6 +10,14 @@
             <article class="apercu2">
 {#              affiche les éléments choisi dans la BDD (ici 'nom de l'auteur'#}
                 <h2>{{ livre.titre }}</h2>
+                {% if livre.auteur %}
+                    <p class="p2">
+                        <a href="{{ path('auteur', {'id': livre.auteur.id}) }}">
+                            de <i><b class="aut_id">{{ livre.auteur.name }}</b></i>
+                        </a>
+
+                    </p>
+                {% endif %}
 {#              (ici 'bio de l'auteur'#}
                 <p>{{ livre.resume }}</p>
                 {% for auteur in livre.auteur %}
